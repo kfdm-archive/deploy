@@ -14,7 +14,7 @@ post %r{/deploy/([\w\.]+)} do |name|
 end
 
 def deploy(name)
-	script = File.dirname(File.expand_path(__FILE__))+"/deploy_#{name}"
+	script = File.dirname(File.expand_path(__FILE__))+"/scripts/deploy_#{name}"
 	return [400,'Missing Deploy Script'] if not File.exist?(script)
 	return [400,'Invalid Deploy Script'] if not File.executable?(script)
 	result = system(script)
